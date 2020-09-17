@@ -1,6 +1,7 @@
 const Contact = require("../models/contact");
 const nodemailer = require("nodemailer");
 const { getMaxListeners } = require("../models/contact");
+const Subscription = require("../models/subscription");
 
 exports.getcontact = async (req, res, next) => {
   const name = req.body.name;
@@ -52,4 +53,39 @@ exports.getcontact = async (req, res, next) => {
     .catch((err) => {
       console.log(err);
     });
+};
+
+exports.getabout = async (req, res, next) => {
+  const email = req.body.email;
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "ldragotechs@gmail.com",
+      pass: "Ldragotechs@7",
+    },
+  });
+  const subscription = await Subscription.findOne({ email: email });
+  if (subscription) {
+    const error = new Error("Already,You are subscribed");
+    throw error;
+  } else {
+    const subscription = new Subscription({
+      email: email,
+    });
+    subscription
+      .save()
+      .then((result) => {
+        console.log(result);
+        res.redirect("/about");
+        transporter.sendMail({
+          from: "ldragotechs@gmail.com",
+          to: email,
+          subject: "Vegefoods",
+          text: "You have subscribed succesfully",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 };

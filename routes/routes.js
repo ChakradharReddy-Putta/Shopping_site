@@ -18,12 +18,14 @@ router.get("/shop", controller.getShop);
 
 router.get("/about", controller.getAbout);
 
+router.post("/subscription", shopController.getabout);
+
 router.get("/blog", controller.getBlog);
 
 router.get("/contact", controller.getContact);
 
-router.get("/cart", controller.getCart);
-
 router.post("/contactform", shopController.getcontact);
+
+router.get("/cart", controller.getCart);
 
 module.exports = router;
