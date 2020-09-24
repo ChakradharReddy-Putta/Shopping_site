@@ -54,10 +54,6 @@ exports.getHome = (req, res, next) => {
   res.render("home", { path: "/home" });
 };
 
-exports.getShop = (req, res, next) => {
-  res.render("shop", { path: "/shop" });
-};
-
 exports.getAbout = (req, res, next) => {
   res.render("about", { path: "/about" });
 };

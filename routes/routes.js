@@ -14,7 +14,7 @@ router.post("/login", controller.login);
 
 router.get("/home", controller.getHome);
 
-router.get("/shop", controller.getShop);
+router.get("/shop", shopController.getProducts);
 
 router.get("/about", controller.getAbout);
 
