@@ -4,7 +4,7 @@ const controller = require("../controllers/signin");
 const shopController = require("../controllers/shop");
 const router = express.Router();
 
-router.get("/auth", (req, res, next) => {
+router.get("/", (req, res, next) => {
   res.render("auth", { path: "/auth" });
 });
 

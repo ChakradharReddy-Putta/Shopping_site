@@ -100,5 +100,7 @@ exports.getProducts = (req, res, next) => {
         path: "/shop",
       });
     })
-    .catch();
+    .catch((err) => {
+      console.log(err);
+    });
 };
