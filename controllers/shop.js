@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 const { getMaxListeners } = require("../models/contact");
 const Subscription = require("../models/subscription");
 const Products = require("../models/products");
+const Offers = require("../models/products-offer");
 
 exports.getcontact = async (req, res, next) => {
   const name = req.body.name;
@@ -98,6 +99,20 @@ exports.getProducts = (req, res, next) => {
       res.render("shop", {
         products: products,
         path: "/shop",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.getOffers = (req, res, next) => {
+  Offers.find()
+    .then((offers) => {
+      console.log(offers);
+      res.render("shop-offers", {
+        products: offers,
+        path: "/shop-offers",
       });
     })
     .catch((err) => {

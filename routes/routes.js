@@ -16,6 +16,8 @@ router.get("/home", controller.getHome);
 
 router.get("/shop", shopController.getProducts);
 
+router.get("/offers", shopController.getOffers);
+
 router.get("/about", controller.getAbout);
 
 router.post("/subscription", shopController.getabout);
